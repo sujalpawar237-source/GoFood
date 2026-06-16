@@ -9,16 +9,16 @@ function Home() {
   const [foodItem, setFoodItem] = React.useState([]);
 
   const loadData = async () => {
-    let response = await fetch("http://localhost:5000/api/foodData", {
+    let response = await fetch("https://backend-tv4w.onrender.com/api/foodData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
     });
     response = await response.json();
-
-    setFoodItem(response[0]);
-    setFoodCat(response[1]);
+    console.log("Food API Response:", response);
+    setFoodItem(response[0] || []);
+setFoodCat(response[1] || []);
   };
   useEffect(() => {
     loadData();
@@ -114,8 +114,8 @@ function Home() {
       </div>
 
       <div className="container">
-        {foodCat !== []
-          ? foodCat.map((data) => {
+        {foodCat.length > 0
+          ? foodCat?.map((data) => {
               return (
                 <div className="row mb-3">
                   <div key={data._id} className="fs-3 m-3">
@@ -124,10 +124,10 @@ function Home() {
 
                   <hr />
 
-                  {foodItem !== [] ? (
+                  {foodItem.length > 0 ? (
                     foodItem
-                      .filter((item) => (item.CategoryName === data.CategoryName )&& (item.name.toLowerCase().includes(search.toLocaleLowerCase())))
-                      .map((filterItems) => (
+                      ?.filter((item) => (item.CategoryName === data.CategoryName )&& (item.name.toLowerCase().includes(search.toLocaleLowerCase())))
+                      ?.map((filterItems) => (
                         <div
                           key={filterItems._id}
                           className="col-12 col-md-6 col-lg-3 "
