@@ -1,4 +1,4 @@
-
+mernapp/frontend/node_modules
 mernapp/backend/node_modules
-mernapp/.env
+mernapp/frontend/.env
 mernapp/backend/.env
