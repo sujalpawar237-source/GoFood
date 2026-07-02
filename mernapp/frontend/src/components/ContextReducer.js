@@ -22,12 +22,10 @@ const reducer = (state, action) => {
       let newArr = [...state];
       newArr.splice(action.index, 1);
       return newArr;
+
       case "UPDATE":
-  return state.map((food) => {
-    if (
-      food.id === action.id &&
-      food.size === action.size
-    ) {
+      return state.map((food) => {
+      if (food.id === action.id && food.size === action.size) {
       return {
         ...food,
         qty: food.qty + parseInt(action.qty),
@@ -36,15 +34,6 @@ const reducer = (state, action) => {
     }
     return food;
   });
-      let arr = [...state];
-      arr.find((food, index) => {
-        if (food.id === action.id) {
-          console.log(food.qty, parseInt(action.qty), action.price + food.price);
-          arr[index] = { ...food, price: action.price+food.price, qty: parseInt(action.qty)+food.qty };
-        }
-        return arr;
-      });
-      return arr;
 
       case "DROP":
         let emptyArray = [];

@@ -47,7 +47,7 @@ function Card(props) {
       <img
         className="card-img-top"
         src={props.foodItem.img}
-        alt="Card image cap"
+        alt= {props.foodItem.name}
         style={{ height: "160px", objectFit: "fill" }}
       />
       <div className="card-body">
