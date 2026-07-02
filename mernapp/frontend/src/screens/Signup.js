@@ -6,7 +6,7 @@ function Signup() {
   const [credentials, setCredentials] = React.useState({name: "", email: "", password: "",geolocation: ""});
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:5000/api/createuser', {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/createuser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
